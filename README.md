@@ -12,6 +12,7 @@ This repository contains the source code for my personal web page, available at 
 - Python
 - MySQL
 - Django
+- NodeJS
 
 
 ## Features
