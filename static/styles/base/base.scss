@@ -1,0 +1,622 @@
+// LIBRARIES
+@import "variables.scss";
+
+
+// GLOBAL STYLES
+html {
+	box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+
+body {
+	width: 100%;
+	height: auto;
+	margin: 0px;
+}
+
+header {
+	font-family: $header-font-family;
+    height: auto;
+    margin: 0;
+}
+
+main {
+	min-height: 100vh;
+	height: auto;
+	overflow: hidden;
+	animation-name: main-section-load;
+	animation-duration: $main-section-load-time;
+	animation-timing-function: ease-in;
+	animation-delay: $nav-link-load-time;
+	animation-fill-mode: forwards;
+	opacity: 0;
+
+	h2, h3, h4, h5 {
+		font-family: $subheading-font-family;
+	}
+
+	h1 {
+		font-family: $title-font-family;
+		text-align: center;
+		font-size: 28px;
+	}
+
+	h2 {
+		font-weight: 120;
+		font-size: 23px;
+	}
+
+	h3 {
+		font-weight: 400;
+		margin-top: 0;
+		font-size: 20px;
+	}
+
+	h4 {
+		font-size: 18px;
+	}
+	
+}
+
+@keyframes main-section-load {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 100%;
+	}
+}
+
+footer {
+	font-size: 15px;
+    height: auto;
+    overflow: hidden;
+    margin: 0;
+	
+	a, p {
+		font-family: $footer-font-family;
+		font-size: 15px;
+	}
+
+	background-color: $brand-color-primary;
+}
+
+
+p, li, label, input[type='submit'], button, strong {
+	font-family: $text-font-family;
+	font-size: 15px;
+}
+
+p, strong, ul, li, h1, h2, h3, h4, h5, label {
+	margin: 10px 0px;
+}
+
+strong {
+	font-weight: bold;
+}
+
+.google_translate {
+	width: 200px;
+	height: auto;
+	margin: 5px auto 0 auto;
+}
+
+.goog-te-combo {
+	background-color: white;
+	color: #8f8f8f;
+	border: none;
+	-webkit-appearance: button;
+	appearance: button;
+	outline: none;
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.goog-te-combo option {
+	background: white;
+	color: $brand-color-primary;
+}
+
+#google_translate_element span {
+	display: none;
+}
+
+.goog-te-gadget {
+	color: transparent !important;
+}
+
+.SocialMediaBox {
+	display: inline-block;
+	position: static;
+	width: 100%;
+	height: auto;
+	margin: 10px auto 0 auto;
+	text-align: center;
+	overflow: hidden;
+	z-index: auto;
+	box-shadow: 0 0 0 0;
+}
+
+.SocialMediaBtn {
+	text-decoration: none;
+}
+
+.bi-youtube {
+	color: $social-media-button-color-youtube;
+}
+
+.bi-linkedin {
+	color: $social-media-button-color-linkedin;
+}
+
+.bi-instagram {
+	color: $social-media-button-color-instagram;
+}
+
+.bi-facebook {
+	color: $social-media-button-color-facebook;
+}
+
+.bi-github {
+	color: $social-media-button-color-github;
+}
+
+.bi-bag-fill {
+	color: $social-media-button-color-bag-fill;
+}
+
+.bi-twitter-x {
+	color: $social-media-button-color-twitter-x;
+} 
+
+.bi-tiktok {
+	color: $social-media-button-color-tiktok;
+}
+
+.bi-linkedin, .bi-instagram, .bi-facebook, .bi-github, .bi-bag-fill, .bi-twitter-x, .bi-tiktok, .bi-youtube {
+	overflow: hidden;
+	width: 30px;
+	height: 30px;
+	transition: transform 0.2s ease;
+}
+
+img {
+	border-radius: 15px;
+}
+
+.ToolIcon {
+	border-radius: 0px;
+}
+
+
+
+// MEDIA QUERIES
+@media (min-width: $break-point1) {
+
+	.CookieNotice {
+		background: #171717;
+		position: fixed;
+		z-index: 3;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		width: 100%;
+		opacity: 0.97;
+		display: inline-block;
+		height: 210px;
+		padding: 5px 10px;
+		animation: cookie-notice-load 300ms ease-in;
+	}
+
+	@keyframes cookie-notice-load {
+		0% {
+			transform: translateY(100%);
+		}
+		100% {
+			transform: translateY(0);
+		}
+	}
+
+	.LinkAndTextBox {
+		width: 100%;
+		height: 150px;
+	}
+
+	.CookieNoticeFormBox {
+		width: 100%;
+		height: 70px;
+		padding: 0;
+	}
+
+	.LinkAndTextBox, .CookieNoticeFormBox {
+		display: block;
+		float: left;
+		position: relative;
+		top: 0;
+	}
+
+	.CookieNoticeText, .LearnMoreLink {
+		color: white;
+		text-align: left;
+		float: left;
+		width: 100%;
+	}
+
+	.LearnMoreLink {
+		text-decoration: none;
+	}
+
+	.CookieNoticeForm {
+		height: auto;
+	}
+
+	.IGotIt {
+		display: block;
+		background: #2d85f3;
+		border: none;
+		border-radius: 5px;
+		position: static;
+		top: 0;
+		margin: auto;
+		font-weight: bold;
+		color: white;
+		padding: 12px 30px;
+	}
+
+	.IGotIt:hover {
+		background: #4593F4;
+		cursor: pointer;
+	}
+
+	footer {
+		padding: 50px 20px;
+	}
+
+	#FooterLogo, #SubscriptionBox, #FooterMenu {
+		margin-bottom: 30px;
+	}
+
+}
+
+@media (min-width: $break-point2) {
+
+	.google_translate {
+	    margin-top: 10px;
+	}
+
+	.CookieNotice {
+		height: 180px;
+	}
+
+	.LinkAndTextBox {
+		height: 120px;
+	}
+
+	.CookieNoticeFormBox {
+		height: 50px;
+	}
+
+}
+
+@media (min-width: $break-point3) {
+
+	.google_translate {
+	    margin-top: 15px;
+	}
+
+	main {
+
+		h1 {
+			font-size: 30px;
+		}
+
+		h2 {
+			font-size: 25px;
+		}
+		
+		h3 {
+			font-size: 21px;
+		}
+
+		h4 {
+			font-size: 19px;
+		}
+
+	}
+
+	p, li, label, input[type='submit'], button, strong {
+		font-size: 16px;
+	}
+
+}
+
+@media (min-width: $break-point4) {
+
+	main {
+
+		h1 {
+			font-size: 35px;
+		}
+
+		h2 {
+			font-size: 27px;
+		}
+
+		h3 {
+			font-size: 23px;
+		}
+	
+	}
+
+}
+
+@media (min-width: $break-point5) {
+
+	main {
+	
+		h2 {
+			font-size: 30px;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+
+	}
+
+	footer {
+		padding: 70px 20px;
+	}
+
+}
+
+@media (min-width: $break-point6) {}
+
+@media (min-width: $break-point7) {
+
+	main {
+
+		h1 {
+			font-size: 35px;
+		}
+
+		h2 {
+			font-size: 33px;
+		}
+
+		h3 {
+			font-size: 30px;
+		}
+
+		h4 {
+			font-size: 23px;
+		}
+
+		h5 {
+			font-size: 22px;
+		}
+
+	}
+
+	p, li, label, input[type='submit'], button, strong {
+		font-size: 18px;
+	}
+
+	.CookieNotice {
+		height: 200px;
+	}
+
+	.LinkAndTextBox {
+		height: 140px;
+	}
+
+	.CookieNoticeFormBox {
+		height: 50px;
+	}
+	
+}
+
+@media (min-width: $break-point8) {}
+
+@media (min-width: $break-point9) {
+
+	main {
+
+		h1 {
+			font-size: 40px;
+		}
+
+		h2 {
+			font-size: 35px;
+		}
+
+		h3 {
+			font-size: 30px;
+		}
+
+		h4 {
+			font-size: 25px;
+		}
+
+		h5 {
+			font-size: 22px;
+		}
+
+	}
+
+	.LinkAndTextBox {
+		height: 125px;
+	}
+
+}
+
+@media (min-width: $break-point10) {
+
+	main {
+
+		h1 {
+			font-size: 45px;
+		}
+
+		h2 {
+			font-size: 40px;
+		}
+
+		h3 {
+			font-size: 35px;
+		}
+
+		h4 {
+			font-size: 30px;
+		}
+
+		h5 {
+			font-size: 25px;
+		}
+
+	}
+
+}
+
+@media (min-width: $break-point11) {
+
+	.CookieNotice {
+		height: 120px;
+	}
+
+	.LinkAndTextBox {
+		width: 80%;
+	}
+
+	.CookieNoticeFormBox {
+		width: 20%;
+	}
+
+	.IGotIt {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+}
+
+@media (min-width: $break-point12) {
+
+	.CookieNotice {
+		height: 130px;
+	}
+
+	.LinkAndTextBox {
+		width: 78%;
+	}
+
+	.CookieNoticeFormBox {
+		width: 22%;
+	}
+
+	.LinkAndTextBox, .CookieNoticeFormBox {
+		height: 100%;
+	}
+
+	.SocialMediaBox {
+		display: grid;
+		position: fixed;
+		height: 370px;
+		width: 60px;
+		margin: 0 0 0 40px;
+		top: 50%;
+		transform: translatey(-50%);
+		padding: 20px 12px;
+		background: #cccccc45;
+		z-index: 2;
+		border-radius: 10px;
+		box-shadow: 4.45px 4.45px 4.45px 4.45px rgba(0, 0, 0, 0.2);
+		animation-name: social-media-box-load;
+		animation-timing-function: ease-out;
+		animation-fill-mode: forwards;
+		justify-items: center;
+		align-items: center;
+	}
+
+	@keyframes social-media-box-load {
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
+
+	.bi-linkedin, .bi-instagram, .bi-facebook, .bi-github, .bi-bag-fill, .bi-twitter-x, .bi-tiktok, .bi-youtube {
+		height: 35px;
+		width: 35px;
+        display: block;
+	}
+
+	.bi-linkedin:hover, .bi-instagram:hover, .bi-facebook:hover, .bi-github:hover, .bi-bag-fill:hover, .bi-twitter-x:hover, .bi-tiktok:hover, .fa-bars:hover, .bi-youtube:hover {
+		transform: scale(1.2);
+	}
+
+	footer {
+		padding: 70px 50px;
+	}
+
+	#FooterLogo, #SubscriptionBox {
+		margin-bottom: 60px;
+	}
+
+	#FooterMenu {
+		margin-bottom: 0px;
+	}
+
+	#FooterLogo img {
+		display: block;
+		margin: auto;
+	}
+
+}
+
+@media (min-width: $break-point13) {}
+
+@media (min-width: $break-point14) {
+	
+	#FooterLogo img {
+		display: inline;
+		margin: auto;
+	}
+
+}
+
+@media (min-width: $break-point15) {
+
+	.CookieNotice {
+		height: 90px;
+		padding: 5px 20px;
+	}
+
+	#FooterLogo, #SubscriptionBox {
+		margin-bottom: 0px;
+	}
+
+	#SubscriptionBox {
+		padding-right: 100px;
+	}
+
+}
+
+@media (min-width: $break-point16) {
+
+	.IGotIt {
+		left: 70%;
+	}
+
+}
+
+@media (min-width: $break-point17) {}

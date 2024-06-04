@@ -1,0 +1,192 @@
+<!-- Extending the base html with this html file -->
+{% extends "base.html" %}
+
+<!-- Overwriting the metaDescription block -->
+{% block metaDescription %}
+<meta name="description" content="{{ service_detail.meta_description }}">
+{% endblock %}
+
+<!-- Overwriting the title block -->
+{% block title %}
+<title>{{ service_detail.service_title }}</title>
+{% endblock %}
+
+<!-- Overwriting the stylesheet block -->
+{% block stylesheet %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'styles/services/service_detail.css' %}">
+{% endblock %}
+
+<!-- Overwriting the mainBox block -->
+{% block mainBox %}
+<div id="ServiceDetailPageBox">
+
+    <h1>{{ service_detail.service_title }}</h1>
+
+    <div id="ServiceDetailContentBox">
+
+        {% if service_detail.para1 and service_detail.image1 %}
+        
+        {% if service_detail.process_chart and service_detail.process_chart_alt %}
+        
+        <div id="ProcessChart">
+
+            <img id="ProcessChartImg" src="{{ service_detail.process_chart.url }}" alt="{{ service_detail.process_chart_alt }}" />
+        
+        </div>
+
+        {% endif %}
+
+        <div class="BenefitsBox">
+
+            <div class="ImageBox ImageBoxLeft">
+
+                <img src="{{ service_detail.image1.url }}" alt="{{ service_detail.alt1 }}">    
+
+            </div>
+
+            <div class="TextBox TextBoxRight">
+
+                <h2>{{ service_detail.header1 }}</h2>
+                
+                {% if service_detail.para1 %}
+
+                <p>{{ service_detail.para1 }}</p>
+
+                {% endif %}
+
+                {% if service_detail.para2 %}
+
+                <p>{{ service_detail.para2 }}</p>
+
+                {% endif %}
+
+                {% if service_detail.para3 %}
+
+                <p>{{ service_detail.para3 }}</p>
+
+                {% endif %}
+
+                {% if all_contact_information_objs.last.email %}
+        
+                <a id="SendEmailButton" href="mailto:{{ all_contact_information_objs.last.email }}" style="text-decoration: none; float: left; margin-right: 10px;" target="_blank">
+        
+                    <button type="button" class="btn btn-success btn-lg my-2" style="display: flex; align-items: center; justify-content: center;">
+        
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16"
+        
+                            style="margin-right: 5px;">
+        
+                            <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
+
+                        </svg>
+                        
+                        Send Email
+                    
+                    </button>
+                
+                </a>
+                
+                {% endif %}
+
+            </div>
+
+        </div>
+
+        {% endif %}
+
+        {% if service_detail.para4 and service_detail.image2 %}
+
+        <div class="BenefitsBox">
+
+            <div class="ImageBox ImageBoxRight">
+
+                <img src="{{ service_detail.image2.url }}" alt="{{ service_detail.alt2 }}">    
+
+            </div>
+
+            
+            <div class="TextBox TextBoxLeft">
+                
+                {% if service_detail.header2 %}
+
+                <h2>{{ service_detail.header2 }}</h2>
+                
+                {%endif %}
+
+                {% if service_detail.para4 %}
+
+                <p>{{ service_detail.para4 }}</p>
+
+                {% endif %}
+
+                {% if service_detail.para5 %}
+
+                <p>{{ service_detail.para5 }}</p>
+
+                {% endif %}
+
+                {% if service_detail.para6 %}
+
+                <p>{{ service_detail.para6 }}</p>
+
+                {% endif %}
+
+            </div>
+
+        </div>
+        {% endif %}
+
+        {% if service_detail.para7 and service_detail.image3 %}
+        
+        <div class="BenefitsBox">
+
+            <div class="ImageBox ImageBoxLeft">
+
+                <img src="{{ service_detail.image3.url }}" alt="{{ service_detail.alt3 }}">    
+
+            </div>
+
+            <div class="TextBox TextBoxRight">
+                
+                {% if service_detail.header3 %}
+
+                <h2>{{ service_detail.header3 }}</h2>
+                
+                {% endif %}
+
+                {% if service_detail.para7 %}
+
+                <p>{{ service_detail.para7 }}</p>
+
+                {% endif %}
+
+                {% if service_detail.para8 %}
+
+                <p>{{ service_detail.para8 }}</p>
+
+                {% endif %}
+
+                {% if service_detail.para9 %}
+
+                <p>{{ service_detail.para9 }}</p>
+
+                {% endif %}
+            
+            </div>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+</div>
+{% endblock %}
+
+<!-- Overwriting the javascript block -->
+{% block js %}
+<script>
+    sendScreenSize("service_detail_page_visit_information", "{{ csrf_token }}");
+</script>
+{% endblock %}

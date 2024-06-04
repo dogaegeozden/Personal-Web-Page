@@ -1,0 +1,80 @@
+<!-- Extending the base html with this html file -->
+{% extends "base.html" %}
+
+<!-- Overwriting the metaDescription block -->
+{% block metaDescription %}
+{% comment %} <meta name="description" content="{{ all_meta_description_objs.last.text }}"> {% endcomment %}
+{% endblock %}
+
+<!-- Overwriting the title block -->
+{% block title %}
+<title>Unsubscribe</title>
+{% endblock %}
+
+<!-- Overwriting the stylesheet block -->
+{% block stylesheet %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'styles/unsubscribe/unsubscribe.css' %}">
+{% endblock %}
+
+<!-- Overwriting the mainBox block -->
+{% block mainBox %}
+<div id="UnsubscribePageBox">
+
+    <div id="UnsubscribeFormBox">
+
+        <div class="container">
+
+            <div class="row justify-content-center">
+                
+                <div class="col-sm-12 col-md-6 col-lg-6">
+    
+                    <img src="{{ all_brand_identity_objs.last.logo.url }}" style="width: 100px; height:100px;" class="rounded float-start" alt="Logo">
+                    
+                </div>
+    
+            </div>
+
+            <div class="row justify-content-center">
+        
+                <div class="col-sm-12 col-md-6 col-lg-6">
+
+                    <div class="mt-4">
+
+                        <h2 class="mb-4">Unsubscribe</h2>
+
+                        <p class="lead">Are you sure you want to unsubscribe from my blog?</p>
+        
+                    </div>
+
+                    <form method="post"  action="." class="mt-4">
+        
+                        {% csrf_token %}
+
+                        <div class="text-center">
+
+                            <button name="UnsubscribeBtn" type="submit" class="btn btn-danger btn-lg">Unsubscribe!</button>
+
+                        </div>
+
+                    </form>
+        
+                </div>
+        
+            </div>
+        
+        </div>
+        
+    </div>
+
+</div>
+{% endblock %}
+
+<!-- Overwriting the js block -->
+{% block js %}
+<script>
+
+    sendScreenSize("unsubscribe_page_visit_information", "{{ csrf_token }}");
+
+</script>
+{% endblock %}

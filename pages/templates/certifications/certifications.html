@@ -1,0 +1,165 @@
+<!-- Extending the base html with this html file -->
+{% extends "base.html" %}
+
+<!-- Overwriting the metaDescription block -->
+{% block metaDescription %}
+<meta name="description" content="{{ all_meta_description_objs.last.text }}">
+{% endblock %}
+
+<!-- Overwriting the title block -->
+{% block title %}
+<title>Certifications</title>
+{% endblock %}
+ 
+<!-- Overwriting the stylesheet block -->
+{% block stylesheet %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'styles/certifications/certifications.css' %}">
+{% endblock %}
+
+{% block AboutLink %}
+<a class="nav-link dropdown-toggle fw-bold active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">About</a>                  
+{% endblock %}
+
+<!-- Overwriting the mainBox block -->
+{% block mainBox %}
+
+<div id="CertificationsPageBox">
+
+    <h1>CERTIFICATIONS</h1>
+
+    {% if all_certification_objs.first %}
+
+    <div id="CertificationsWallBox">
+
+            {% for certification in all_certification_objs|dictsort:"title" %}
+
+            {% if certification.digital_copy or certification.digital_copy_url %}
+
+            <div class="CertificationItem my-5 px-3" style="float:left;">
+
+                <h3>{{ certification.title }}</h3>
+            
+                <p>Issued by: {{ certification.issuer }}</p>
+                
+                {% if certification.issue_date %}
+                
+                <p>Issue Date: {{ certification.issue_date }}</p>
+
+                {% else %}
+
+                <p>Issue Date: N/A</p>
+
+                {% endif %}
+                
+                <p>Expiry Date: {{ certification.expiry_date }}</p>
+                
+                {% if certification.digital_copy_url %}
+
+                <a href="{{ certification.digital_copy_url }}" target="_blank" class="btn btn-primary">View Certificate</a>
+                
+                {% else %}
+
+                <a href="{{ certification.digital_copy.url }}" target="_blank" class="btn btn-primary">View Certificate</a>
+
+                {% endif %}
+                
+            </div>
+
+            {% endif %}
+
+            {% endfor %}
+
+        </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}
+
+
+<!-- Overwriting the js block -->
+{% block js %}
+
+<script>
+
+    sendScreenSize("certifications_page_visit_information", "{{ csrf_token }}");
+
+</script>
+
+<!-- Creating a script which finds the certification frame which has the highest height value and sets the other frames' height to that value. -->
+<script>
+
+    document.addEventListener("DOMContentLoaded", function() {
+        
+        // Creating an array called certificationFrames by selecting all the elements from the DOM which has CertificationFrame class.
+        let certificationFrames = document.querySelectorAll(".CertificationFrame");
+
+        // Creating an empty array called heightValues 
+        let heightValues = [];
+
+        function findTheLongestFrame(){
+            // A function which finds the longest certification frame.
+
+            for (let cF = 0; cF < certificationFrames.length; cF++ ) {
+
+                // Creating a variable called certificationChoice from the certification's id attribute.
+                let certificationFrameHeight = certificationFrames[cF].offsetHeight;
+
+                // Appending the height values to heightValues array
+                heightValues.push(certificationFrameHeight);
+
+            }
+
+            // Creating variable called heighestValue from the heightValues array's maximum value.
+            let heighestValue = `${Math.max(...heightValues)}px`;
+
+            return heighestValue
+
+        } 
+
+        function changeFrameHeights(){
+            // A function which sets every frame's height equal to the longest one's height.
+
+            for (let cFI = 0; cFI < certificationFrames.length; cFI++) {
+
+                // Setting every single certification frame's height equal to the longest one's height.
+                certificationFrames[cFI].style.height = findTheLongestFrame();
+
+            }
+
+        }
+
+        function addPostRequestSendingFunctionality() {
+            // A function which adds send request functionality to all elements in the array.
+        
+            // Looping in the range of certificationFrames array's length 
+            for (let cF = 0; cF < certificationFrames.length; cF++ ) {
+
+                // Creating a variable called certificationChoice from the certification's id attribute.
+                let certificationChoice = certificationFrames[cF].getAttribute("id");
+        
+                // Connecting the element with the sendCertChoInf function as the function will going to trigger with a click.
+                certificationFrames[cF].addEventListener("click", function(){
+                    sendClickInfo("certchoinf", certificationChoice, "{{ csrf_token }}")
+                });
+
+            }
+
+        }
+        
+        // Calling the findTheLongestFrame function.
+        findTheLongestFrame();
+        
+        // Calling the changeFrameHeights function.
+        changeFrameHeights();
+        
+        // Calling the addPostRequestSendingFunctionality function.
+        addPostRequestSendingFunctionality();
+    
+    });
+
+</script>
+
+{% endblock %}

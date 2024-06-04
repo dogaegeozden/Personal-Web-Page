@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block metaDescription %}
+<meta name=description content="{{ all_meta_description_objs.last.text }}">
+{% endblock %}
+
+{% block stylesheet %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'styles/books/books.css' %}">
+{% endblock %}
+
+{% block title %}
+<title>Books</title>
+{% endblock %}
+
+{% block StoreLink %}
+<a class="nav-link dropdown-toggle fw-bold active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Store</a>
+{% endblock %}
+
+{% block mainBox %}
+<div id="BooksPageBox">
+
+    <h1>BOOKS</h1>
+
+    <div id="BooksPageContentBox">
+
+        {% for book in all_book_objs reversed %}
+
+        <div class="pb-5 ps-3 pe-3">
+            
+            <a target="_blank" class="text-decoration-none" href="{{ book.get_absolute_url }}">
+
+                <div class="card pt-5">
+    
+                    <div class="card-visual-top">
+
+                        <img class="CardVisual" width="100%" style="object-fit: cover;" src="{{ book.thumbnail_picture.url }}" class="card-img-top" alt="{{ book.thumbnail_picture_alt }}">
+
+                    </div>
+                    
+                    <div class="card-body">
+
+                        <h3 class="card-title text-center">{{ book.book_title }}</h3>
+    
+                    </div>
+
+                </div>
+
+            </a>
+
+        </div>
+        
+        {% endfor %}
+
+    </div>
+
+</div>
+{% endblock %}
+
+{% block javaScriptCodes %}
+<script>
+
+    sendScreenSize("books_page_visit_information", "{{ csrf_token }}");
+
+</script>
+{% endblock %}

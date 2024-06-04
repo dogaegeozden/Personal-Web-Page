@@ -1,0 +1,215 @@
+// LIBRARIES
+@import "../base/variables.scss";
+@import "../base/mixins.scss";
+
+// MEDIA QUERIES
+@media (min-width: $break-point1) {
+
+    #ServicesPageBox {
+        @include standard-page-box-style;
+    }
+
+    #ServiceContentBox {
+        @include standard-content-box-style;
+    }
+
+    #ParaBox {
+        padding: 10px 0px;
+    }
+
+    #CardBox {
+        margin: auto;
+        min-height: 300px;
+        height: auto;
+    }
+
+    .CardImageBox {
+        height: 115px;
+    }
+
+    .CardTextBox {
+        padding: 10px;
+    }
+
+    .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        max-width: 300px;
+        margin: 20px auto;
+        text-align: center;
+        border-radius: 15px;
+        display: block;
+    }
+    
+    .CardLink {
+        text-decoration: none;
+        color: black;
+    }
+    
+    .CardImageBox img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+    }
+    
+    .CardTextBox {
+        overflow: scroll;
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+    }
+    
+    .card button {
+        border: none;
+        outline: 0;
+        padding: 12px;
+        color: white;
+        background-color: #000;
+        text-align: center;
+        cursor: pointer;
+        width: 100%;
+        font-size: 18px;
+    }
+    
+    .card button:hover {
+        opacity: 0.7;
+    }
+
+}
+
+@media (min-width: $break-point2) {
+
+    .CardImageBox {
+        height: 135px;
+    }
+
+}
+
+@media (min-width: $break-point3) {
+
+    .CardImageBox {
+        height: 155px;
+    }
+
+    #ParaBox {
+        padding: 20x 0px;
+    }
+
+}
+
+@media (min-width: $break-point4) {
+
+    .CardImageBox {
+        height: 155px;
+    }
+
+}
+
+@media (min-width: $break-point5) {
+    
+    .CardImageBox {
+        height: 180px;
+    }
+
+}
+
+@media (min-width: $break-point6) {
+
+    .CardImageBox {
+        height: 180px;
+    }
+
+}
+
+@media (min-width: $break-point7) {}
+
+@media (min-width: $break-point8) {
+
+    .CardImageBox {
+        height: 190px;
+    }
+
+}
+
+@media (min-width: $break-point9) {
+
+    .CardImageBox {
+        height: 210px;
+    }
+
+    .card {
+        margin: 30px auto;
+    }
+
+    .ServicesIntroductionBox {
+        margin-bottom: 30px;
+    }
+
+}
+
+@media (min-width: $break-point10) {}
+
+@media (min-width: $break-point11) {
+
+    .card {
+        float: left;
+        margin: 30px 5%;
+        height: 590px;
+        width: 40%;
+    }
+
+    .CardTextBox {
+        height: 300px;
+    }
+
+    .ServicesIntroductionBox p {
+        padding: 20px 30px;
+    }
+
+}
+
+@media (min-width: $break-point12) {
+
+    #ParaBox {
+        padding: 15px 20px;
+    }
+
+}
+
+@media (min-width: $break-point13) {
+
+    #CardBox {
+        width: 900px;
+    }
+
+    .card {
+        margin: 30px 75px;
+        width: auto;
+    }
+
+}
+
+@media (min-width: $break-point14) {
+
+    #CardBox {
+        width: 1170px;
+    }
+    
+    .card { 
+        margin: 30px 45px;
+    }
+
+}
+
+@media (min-width: $break-point15) {
+
+    #CardBox {
+        width: 1200px;
+    }
+    
+    .card { 
+        margin: 30px 50px;
+    }
+
+}
+
+@media (min-width: $break-point16) {}
+@media (min-width: $break-point17) {}

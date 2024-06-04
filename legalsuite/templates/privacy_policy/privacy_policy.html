@@ -1,0 +1,264 @@
+<!-- Extending the base html with this html file -->
+{% extends "base.html" %}
+
+<!-- Overwriting the metaDescription block -->
+{% block metaDescription %}
+<meta name="description" content="{{ all_meta_description_objs.last.text }}">
+{% endblock %}
+
+<!-- Overwriting the title block -->
+{% block title %}
+<title>Privacy Policy</title>
+{% endblock %}
+
+<!-- Overwriting the stylesheet block -->
+{% block stylesheet %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'styles/privacy_policy/privacy_policy.css' %}">
+{% endblock %}
+
+<!-- Overwriting the mainBox block -->
+{% block mainBox %}
+<div id="PrivacyPolicyBox">
+    
+    <h1>PRIVACY POLICY</h1>
+    
+    {% if all_privacy_policy_objs.last.effective_date %}
+
+    <p>Effective Date: {{ all_privacy_policy_objs.last.effective_date }}</p>
+
+    {% endif %}
+
+    {% if all_privacy_policy_objs.last.section_1_title and all_privacy_policy_objs.last.section_1_text %}
+
+    <section class="my-5" id="{{ all_privacy_policy_objs.last.section_1_title }}">
+
+        <h2>{{ all_privacy_policy_objs.last.section_1_title }}</h2>
+
+        <p>{{ all_privacy_policy_objs.last.section_1_text }}</p>
+
+        <p><strong>Sections:</strong></p>
+
+        <ol>
+
+            {% if all_privacy_policy_objs.last.section_1_title %}
+
+            <li><a href="#{{ all_privacy_policy_objs.last.section_1_title }}">{{ all_privacy_policy_objs.last.section_1_title }}</a></li>
+
+            {% endif %}
+
+            {% if all_privacy_policy_objs.last.section_2_title %}
+
+            <li><a href="#{{ all_privacy_policy_objs.last.section_2_title }}">{{ all_privacy_policy_objs.last.section_2_title }}</a></li>
+
+            {% endif %}
+
+            {% if all_privacy_policy_objs.last.section_3_title %}
+
+            <li><a href="#{{ all_privacy_policy_objs.last.section_3_title }}">{{ all_privacy_policy_objs.last.section_3_title }}</a></li>
+
+            {% endif %}
+            
+            {% if all_privacy_policy_objs.last.section_4_title %}
+
+            <li><a href="#{{ all_privacy_policy_objs.last.section_4_title }}">{{ all_privacy_policy_objs.last.section_4_title }}</a></li>
+
+            {% endif %}
+
+            {% if all_privacy_policy_objs.last.section_5_title %}
+
+            <li><a href="#{{ all_privacy_policy_objs.last.section_5_title }}">{{ all_privacy_policy_objs.last.section_5_title }}</a></li>
+
+            {% endif %}
+
+            {% if all_privacy_policy_objs.last.section_6_title %}
+
+            <li><a href="#{{ all_privacy_policy_objs.last.section_6_title }}">{{ all_privacy_policy_objs.last.section_6_title }}</a></li>
+
+            {% endif %}
+
+            {% if all_privacy_policy_objs.last.section_7_title %}
+
+            <li><a href="#{{ all_privacy_policy_objs.last.section_7_title }}">{{ all_privacy_policy_objs.last.section_7_title }}</a></li>
+
+            {% endif %}
+
+            {% if all_privacy_policy_objs.last.section_8_title %}
+
+            <li><a href="#{{ all_privacy_policy_objs.last.section_8_title }}">{{ all_privacy_policy_objs.last.section_8_title }}</a></li>
+
+            {% endif %}
+
+            {% if all_privacy_policy_objs.last.section_9_title %}
+
+            <li><a href="#{{ all_privacy_policy_objs.last.section_9_title }}">{{ all_privacy_policy_objs.last.section_9_title }}</a></li>
+
+            {% endif %}
+
+            {% if all_privacy_policy_objs.last.section_10_title %}
+
+            <li><a href="#{{ all_privacy_policy_objs.last.section_10_title }}">{{ all_privacy_policy_objs.last.section_10_title }}</a></li>
+
+            {% endif %}
+
+            {% if all_privacy_policy_objs.last.section_11_title %}
+
+            <li><a href="#{{ all_privacy_policy_objs.last.section_11_title }}">{{ all_privacy_policy_objs.last.section_11_title }}</a></li>
+
+            {% endif %}
+
+            {% if all_privacy_policy_objs.last.section_12_title %}
+
+            <li><a href="#{{ all_privacy_policy_objs.last.section_12_title }}">{{ all_privacy_policy_objs.last.section_12_title }}</a></li>
+
+            {% endif %}
+
+        </ol>
+
+    </section>
+
+    {% endif %}
+
+    {% if all_privacy_policy_objs.last.section_2_title and all_privacy_policy_objs.last.section_2_text %}
+
+    <section class="my-5" id="{{ all_privacy_policy_objs.last.section_2_title }}">
+
+        <h2>{{ all_privacy_policy_objs.last.section_2_title }}</h2>
+
+        <p>{{ all_privacy_policy_objs.last.section_2_text }}</p>
+
+    </section>
+
+    {% endif %}
+
+    {% if all_privacy_policy_objs.last.section_3_title and all_privacy_policy_objs.last.section_3_text %}
+
+    <section class="my-5" id="{{ all_privacy_policy_objs.last.section_3_title }}">
+
+        <h2>{{ all_privacy_policy_objs.last.section_3_title }}</h2>
+
+        <p>{{ all_privacy_policy_objs.last.section_3_text }}</p>
+
+    </section>
+
+    {% endif %}
+
+    {% if all_privacy_policy_objs.last.section_4_title and all_privacy_policy_objs.last.section_4_text %}
+
+    <section class="my-5" id="{{ all_privacy_policy_objs.last.section_4_title }}">
+
+        <h2>{{ all_privacy_policy_objs.last.section_4_title }}</h2>
+
+        <p>{{ all_privacy_policy_objs.last.section_4_text }}</p>
+
+    </section>
+
+    {% endif %}
+
+    {% if all_privacy_policy_objs.last.section_5_title and all_privacy_policy_objs.last.section_5_text %}
+
+    <section class="my-5" id="{{ all_privacy_policy_objs.last.section_5_title }}">
+
+        <h2>{{ all_privacy_policy_objs.last.section_5_title }}</h2>
+
+        <p>{{ all_privacy_policy_objs.last.section_5_text }} </p>
+
+    </section>
+
+    {% endif %}
+
+    {% if all_privacy_policy_objs.last.section_6_title and all_privacy_policy_objs.last.section_6_text %}
+
+    <section class="my-5" id="{{ all_privacy_policy_objs.last.section_6_title }}">
+
+        <h2>{{ all_privacy_policy_objs.last.section_6_title }}</h2>
+
+        <p>{{ all_privacy_policy_objs.last.section_6_text }}</p>
+
+    </section>
+
+    {% endif %}
+
+    {% if all_privacy_policy_objs.last.section_7_title and all_privacy_policy_objs.last.section_7_text %}
+
+    <section class="my-5" id="{{ all_privacy_policy_objs.last.section_7_title }}">
+
+        <h2>{{ all_privacy_policy_objs.last.section_7_title }}</h2>
+
+        <p>{{ all_privacy_policy_objs.last.section_7_text }}</p>    
+
+    </section>
+
+    {% endif %}
+
+    {% if all_privacy_policy_objs.last.section_8_title and all_privacy_policy_objs.last.section_8_text %}
+
+    <section class="my-5" id="{{ all_privacy_policy_objs.last.section_8_title  }}">
+
+        <h2>{{ all_privacy_policy_objs.last.section_8_title  }}</h2>
+
+        <p>{{ all_privacy_policy_objs.last.section_8_text }}</p>    
+
+    </section>
+
+    {% endif %}
+
+    {% if all_privacy_policy_objs.last.section_9_title and all_privacy_policy_objs.last.section_9_text %}
+
+    <section class="my-5" id="{{ all_privacy_policy_objs.last.section_9_title }}">
+
+        <h2>{{ all_privacy_policy_objs.last.section_9_title }}</h2>
+
+        <p>{{ all_privacy_policy_objs.last.section_9_text }}</p>
+
+    </section>
+
+    {% endif %}
+
+    {% if all_privacy_policy_objs.last.section_10_title and all_privacy_policy_objs.last.section_10_text %}
+
+    <section class="my-5" id="{{ all_privacy_policy_objs.last.section_10_title }}">
+
+        <h2>{{ all_privacy_policy_objs.last.section_10_title }}</h2>
+
+        <p>{{ all_privacy_policy_objs.last.section_10_text }}</p>
+
+    </section>
+
+    {% endif %}
+
+    {% if all_privacy_policy_objs.last.section_11_title and all_privacy_policy_objs.last.section_11_text %}
+
+    <section class="my-5" id="{{ all_privacy_policy_objs.last.section_11_title }}">
+
+        <h2>{{ all_privacy_policy_objs.last.section_11_title }}</h2>
+
+        <p>{{ all_privacy_policy_objs.last.section_11_text }}</p>
+
+    </section>
+
+    {% endif %}
+
+    {% if all_privacy_policy_objs.last.section_12_title and all_privacy_policy_objs.last.section_12_text %}
+
+    <section class="my-5" id="{{ all_privacy_policy_objs.last.section_12_title }}">
+
+        <h2>{{ all_privacy_policy_objs.last.section_12_title }}</h2>
+
+        <p>{{ all_privacy_policy_objs.last.section_12_text }}</p>
+
+    </section>
+
+    {% endif %}
+
+</div>
+{% endblock %}
+
+<!-- Overwriting the js block -->
+{% block js %}
+<script>
+
+    sendScreenSize("privacy_policy_page_visit_information", "{{ csrf_token }}");
+
+</script>
+{% endblock %}

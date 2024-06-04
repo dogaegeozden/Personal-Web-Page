@@ -1,0 +1,89 @@
+// BRAND COLORS
+$brand-color-primary: black;
+$brand-color-secondary: white;
+
+// SOCIAL MEDIA BUTTON COLORS
+$social-media-button-color-youtube: #d4101c;
+$social-media-button-color-linkedin: #0077b5;
+$social-media-button-color-instagram: #EF233C;
+$social-media-button-color-facebook: #3b5998;
+$social-media-button-color-github: black;
+$social-media-button-color-bag-fill: #f47421;
+$social-media-button-color-twitter-x: black;
+$social-media-button-color-tiktok: pink;
+
+// FONT FAMILIES
+$title-font-family: 'Poppins', sans-serif;
+$subheading-font-family: 'Noto Sans', sans-serif;
+$text-font-family: 'Montserrat', sans-serif;
+$header-font-family: 'Raleway', sans-serif;
+$footer-font-family: 'Comfortaa', cursive;
+
+// ANIMATION DURATIONS
+$nav-link-load-time: 600ms;
+$main-section-load-time: 600ms;
+$social-media-box-load: 3000ms;
+
+
+
+// BREAK POINTS
+
+
+
+//////////////////////////////
+
+// PHONES
+
+//////////////////////////////
+
+/* JioPhone 2 */
+$break-point1: 239px;
+/* Galaxy Fold */
+$break-point2: 279px;
+/* I Phone 5/SE, I phone 4, Nokia Lumia 520 */
+$break-point3: 319px;
+/* Galaxy Note 3, Galaxy Note 2, Galaxy S3, Galaxy S5, Nexus 5, Moto G4, Microsoft Lumia950, */
+$break-point4: 359px;
+/* Iphone 6/7/8 */
+$break-point5: 374px;
+/* LG Optimus L70, Nexus 4 */
+$break-point6: 383px;
+/* I phone 12 Pro */
+$break-point7: 389px;
+/* Iphone 6,7,8 Plus, Nexus 6P, Nexus 6, Nexus 5X */
+$break-point8: 412px;
+/* Surface Duo */
+$break-point9: 539px;
+/* Black Berry Play Book */
+$break-point10: 600px;
+/* Microsoft Lumia 550 */
+$break-point11: 639px;
+
+
+
+//////////////////////////////
+
+// TABLETS
+
+//////////////////////////////
+
+/* Ipad */
+$break-point12: 767px;
+/* Kindle Fire HDX */
+$break-point13: 799px;
+/* I pad Pro */
+$break-point14: 1023px;
+
+
+
+//////////////////////////////
+
+// LAPTOPS
+
+//////////////////////////////
+
+/* Laptop with MDPI screen, Laptop with touch */
+$break-point15: 1279px;
+$break-point16: 1359px;
+/* Laptop with HiDPI screen */
+$break-point17: 1439px;

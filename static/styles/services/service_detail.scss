@@ -1,0 +1,151 @@
+// LIBRARIES
+@import "../base/variables.scss";
+@import "../base/mixins.scss";
+
+// MEDIA QUERIES
+@media (min-width: $break-point1) {
+
+    #ServiceDetailPageBox {
+        @include standard-page-box-style;
+    }
+
+    #ServiceDetailContentBox {
+        @include standard-detail-content-box-style;
+    }
+
+    #ProcessChart {
+        margin: 35px auto;
+    }
+
+    #ProcessChartImg {
+        width: 100%;
+        height: auto;
+    }
+
+    .BenefitsBox, .ImageBox, .TextBox {
+        width: 100%;
+        text-align: center;
+    }
+
+    .BenefitsBox {
+        display: inline-block;
+        margin: 30px auto;
+    }
+
+    .ImageBox img {
+        width: 100%;
+        object-fit: cover;
+        border-radius: 15px;
+    }
+    
+    .TextBox {
+        padding: 10px;
+    }
+
+}
+
+@media (min-width: $break-point2) {}
+@media (min-width: $break-point3) {}
+@media (min-width: $break-point4) {}
+
+@media (min-width: $break-point5) {
+
+    #ProcessChart {
+        margin: 50px auto;
+    }
+
+    .BenefitsBox {
+        margin: 0px 0px 45px 0px;
+    }
+
+    .TextBox {
+        padding: 20px;
+    }
+
+}
+
+@media (min-width: $break-point6) {}
+@media (min-width: $break-point7) {}
+@media (min-width: $break-point8) {}
+@media (min-width: $break-point9) {}
+
+@media (min-width: $break-point10) {
+
+    #ProcessChart {
+        margin: 120px auto;
+    }
+
+    .BenefitsBox {
+        margin: 0px auto 100px auto;
+    }
+
+    .TextBox {
+        padding: 40px 30px;
+    }
+
+}
+
+@media (min-width: $break-point11) {}
+
+@media (min-width: $break-point12) {
+
+    .TextBox {
+        padding: 50px 30px;
+    }
+
+}
+
+@media (min-width: $break-point13) {}
+
+@media (min-width: $break-point14) {
+
+    .ImageBox, .TextBox {
+        border-radius: 15px;
+        float: left;
+    }
+
+    .ImageBox {
+        width: 50%;
+    }
+
+    .TextBox {
+        width: 45%;
+    }
+
+    .TextBox p {
+        text-align: start;
+    }
+
+    .TextBox h2 {
+        text-align: center;
+    }
+
+    .ImageBoxLeft {
+        float: left;
+    }
+
+    .TextBoxRight {
+        float: right;
+    }
+
+    .ImageBoxRight {
+        float: right;
+    }
+
+    .ImageBoxLeft {
+        float: left;
+    }
+
+}
+
+@media (min-width: $break-point15) {
+
+    #ProcessChart {
+        margin: 200px auto;
+    }
+
+}
+
+@media (min-width: $break-point16) {}
+@media (min-width: $break-point17) {}
+

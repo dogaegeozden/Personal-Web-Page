@@ -1,0 +1,273 @@
+<!-- Extending the base html with this html file -->
+{% extends "base.html" %}
+
+<!-- Overwriting the metaDescription block -->
+{% block metaDescription %}
+<meta name="description" content="{{ all_meta_description_objs.last.text }}">
+{% endblock %}
+
+<!-- Overwriting the title block -->
+{% block title %}
+<title>Doga Ozden Creative Studio - {{ all_brand_identity_objs.last.slogan }}</title>
+{% endblock %}
+
+<!-- Overwriting the stylesheet block -->
+{% block stylesheet %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'styles/home/home.css' %}">
+{% endblock %}
+
+{% block HomeLink %}
+<a class="nav-link fw-bold active" aria-current="page" href="{% url 'home'%}">Home</a>
+{% endblock %}
+
+<!-- Overwriting the mainBox block -->
+{% block mainBox %}
+<div id="ProfileBox">
+
+    <!-- A div for biography contents -->
+    <div id="BioBox">
+
+        {% if all_profile_picture_objs.first.image %}
+        
+        <div id="BioPicBox">
+        
+            <a target="_blank" href="{{ all_profile_picture_objs.last.image.url }}"><img id="{{ all_profile_picture_objs.last.image }}" class="ProfilePic" src="{{ all_profile_picture_objs.last.image.url }}" alt="{{ all_profile_picture_objs.last.alt }}"></a>
+        
+        </div>
+        
+        {% endif %}
+
+        {% if all_bio_objs.first.text %}
+        
+        <div id="BioTextBox">
+        
+            <div id="BioTextBoxContent">
+        
+                <hr id="Line1">
+        
+                <h1>DOGA EGE OZDEN</h1>
+        
+                <p>{{ all_bio_objs.last.text }}</p>
+        
+                <hr class="Line2">
+        
+            </div>
+        
+        </div>
+        {% endif %}
+
+    </div>
+
+    <!-- A div for language and tool contents -->
+    {% if all_tools_and_languages_main_visual_objs.first.image %}
+
+    <div id="LanguagesAndToolsBox">
+
+        <div id="ToolsAndLanguagesLeft">
+
+            <div id="TALTB">
+
+                <h2>{{ all_tools_and_languages_main_visual_objs.last.title }}</h2>
+
+            </div>
+
+            <div id="TALIB">
+
+                {% for lot in all_tools_and_languages_objs %}
+
+                {% if lot.icon_file %}
+
+                <img id="{{ lot.title }}" class="ToolIcon" src="{{ lot.icon_file.url }}" alt="{{ lot.alt }}"/>&nbsp;
+
+                {% elif lot.icon_url %}
+
+                <img id="{{ lot.title }}" class="ToolIcon" src="{{ lot.icon_url }}" alt="{{ lot.alt }}"/>&nbsp;
+
+                {% endif %}
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+        <div id="ToolsAndLanguagesRight">
+
+            <a target="_blank" href="{{ all_tools_and_languages_main_visual_objs.last.image.url }}"><img id="{{ all_tools_and_languages_main_visual_objs.last.image }}" width="100%" id="TALMI" src="{{ all_tools_and_languages_main_visual_objs.last.image.url }}" alt="{{ all_tools_and_languages_main_visual_objs.last.alt }}"/></a>
+
+        </div>
+
+    </div>
+
+    {% endif %}
+
+    <!-- A div for acivity contents -->
+    {% if all_activity_objs.first.image %}
+
+    <div id="Activities">
+
+        <h2>ACTIVITIES</h2>
+
+        {% for a in all_activity_objs %}
+
+        <div class="SpecificActivityBox">
+
+            <div class="SAIB Reveal">
+
+                <a target="_blank" href="{{ a.image.url }}"><img id="{{ a.image }}" class="ActivityImg" src="{{ a.image.url }}" alt="{{ a.alt }}"></a>
+
+            </div>
+
+            <div class="SATB Reveal">
+
+                <h3>{{ a.title }}</h3>
+
+                <p>{{ a.description }}</p>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    {% endif %}
+    
+    <!-- Client 1 - HCF Bootstrap 5 Component -->
+    <div id="Clients">
+
+        <div class="container mb-5 mb-md-6">
+
+            <div class="row justify-content-md-center">
+
+                <div class="col-12 col-md-10 col-lg-8 col-xl-7 col-xxl-6 text-center">
+                    
+                    {% if all_clients_section_text_content_objs.last.title %}
+
+                    <h2 class="mb-4">{{ all_clients_section_text_content_objs.last.title }}</h2>
+
+                    {% endif %}
+
+                    {% if all_clients_section_text_content_objs.last.text %}
+
+                    <p class="text-secondary mb-4 mb-md-5">{{ all_clients_section_text_content_objs.last.text }} </p>
+
+                    {% endif %}
+
+                    <hr class="w-50 mx-auto mb-0 text-secondary">
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="container overflow-hidden">
+
+            <div class="row gy-5 gy-md-6">
+                
+                {% for item in all_client_objs %}
+                <div class="col-6 col-md-3 align-self-center text-center">
+                
+                    <img width="100%" style="max-width: 200px; max-height: 200px; object-fit: cover; filter: grayscale(30%);" src="{{ item.logo.url }}" alt="{{ item.logo_alt }}">
+
+                </div>
+
+                {% endfor %}
+            
+            </div>
+        
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}
+
+<!-- Overwriting the js block -->
+{% block js %}
+
+<script>
+    
+    // Call the function to send screen size data
+    sendScreenSize("main_page_visit_information", "{{ csrf_token }}");
+
+</script>
+
+<!-- Calling external javascript file called activity_view.js -->
+<script src="{% static 'js/home/activity_view.js' %}"></script>
+
+<!-- A javascript code that sends a post request to the server when a user clicks to specific elements. -->
+<script>
+
+    // Creating a variable called profilePicture by selecting the element which has ProfilePic id.
+    const profilePicture = document.querySelector("#ProfilePic"),
+
+    // Creating a variable called toolsAndLanguages 
+        toolsAndLanguagesImg = document.querySelector(".TALMI"),
+    
+    // Creating a query set from all of the social media buttons.
+        activityImages = document.querySelectorAll(".ActivityImg"),
+    
+    // Creating a array of tool or language images
+        toolsOrLanguages = document.querySelectorAll(".ToolIcon");
+    
+    // Adding an event listener to every single activity image in the array
+    profilePicture.addEventListener("click", function() {
+
+        // Identifying the profile picture choice from the element's id
+        const profilePictureChoice = profilePicture.getAttribute("id");
+
+        sendClickInfo("profile_picture_choice_request", profilePictureChoice, "{{ csrf_token }}")
+
+    });
+    
+    // Connecting the toolsAndLanguages element with the sendToolsAndLanguagesImageClickInfo function as the function will going to trigger with a click
+    toolsAndLanguagesImg.addEventListener("click", function() {
+
+        // Creating a variable called toolsAndLanguagesImageChoice from the toolsAndLanguagesImg element's id attribute. 
+        const toolsAndLanguagesImageChoice = toolsAndLanguagesImg.getAttribute("id");
+
+        sendClickInfo("tools_and_languages_image_click_data_request", toolsAndLanguagesImageChoice, "{{ csrf_token }}")
+
+    });
+
+    function addSendRequestFunctionality() {
+        // A function which sends a post request. 
+
+        // Iterating over the array one by one
+        for (let activityImageIndex  = 0; activityImageIndex < activityImages.length; activityImageIndex++ ) {
+
+            // Adding an event listener to every single activity image in the array
+            activityImages[activityImageIndex].addEventListener("click", function() {
+            
+                // Identifying the activity image choice from the element's id
+                const activityImageChoice = activityImages[activityImageIndex].getAttribute("id");
+
+                sendClickInfo("activity_image_choice_request", activityImageChoice, "{{ csrf_token }}") 
+            
+            });
+
+        }
+
+        toolsOrLanguages.forEach(toolOrLanguage => {
+
+            toolOrLanguage.addEventListener("click", function() {
+
+                // Identifying the tool or language choice from the element's id
+                const toolOrLanguageChoice = toolOrLanguage.getAttribute("id");
+
+                sendClickInfo("tool_or_language_choice_request", toolOrLanguageChoice, "{{ csrf_token }}")
+            
+            })
+        
+        })
+    }
+
+    // Calling the addSendRequestFunctionality function.
+    addSendRequestFunctionality();
+
+</script>
+{% endblock %}

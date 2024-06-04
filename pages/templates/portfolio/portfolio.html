@@ -1,0 +1,315 @@
+<!-- Extending the base html with this html file -->
+{% extends "base.html" %}
+
+<!-- Overwriting the metaDescription block -->
+{% block metaDescription %}
+<meta name="description" content="{{ all_meta_description_objs.last.text }}">
+{% endblock %}
+
+<!-- Overwriting the title block -->
+{% block title %}
+<title>Portfolio</title>
+{% endblock %}
+
+{% block PortfolioLink %}
+<a class="nav-link fw-bold active" aria-current="page" href="{% url 'portfolio'%}">Portfolio</a>
+{% endblock %}
+
+<!-- Overwriting the stylesheet block -->
+{% block stylesheet %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'styles/portfolio/portfolio.css' %}">
+{% endblock %}
+
+<!-- Overwriting the mainBox block -->
+{% block mainBox %}
+<div id="PortfolioPageBox">
+
+    <h1>PORTFOLIO</h1>
+
+    <div id="GraphicDesignBox">
+
+        <div id="GDTitleBox">
+
+            <h2 class="CloudText">Graphic Design</h2>
+
+        </div>
+
+        <!-- Photo Grid -->
+        <div id="PhotoGridBox">
+
+            <div id="row">
+
+                <div class="column">
+                    
+                    {% for image in all_photo_grid_column1_objs %}
+                    
+                    <a href="{{ image.img.url }}" target="_blank"><img class="PhotoGridImg" src="{{ image.img.url }}" alt="{{ image.img_alt }}" style="width:100%" loading="lazy"></a>
+                    
+                    {% endfor %}
+
+                </div>
+
+                <div class="column">
+                    
+                    {% for image in all_photo_grid_column2_objs %}
+                    
+                    <a href="{{ image.img.url }}" target="_blank"><img class="PhotoGridImg" src="{{ image.img.url }}" alt="{{ image.img_alt }}" style="width:100%" loading="lazy"></a>
+                    
+                    {% endfor %}
+
+                </div>
+
+                <div class="column">
+                    
+                    {% for image in all_photo_grid_column3_objs %}
+                    
+                    <a href="{{ image.img.url }}" target="_blank"><img class="PhotoGridImg" src="{{ image.img.url }}" alt="{{ image.img_alt }}" style="width:100%" loading="lazy"></a>
+                    
+                    {% endfor %}
+
+                </div>
+
+                <div class="column">
+                    
+                    {% for image in all_photo_grid_column4_objs %}
+                    
+                    <a href="{{ image.img.url }}" target="_blank"><img class="PhotoGridImg" src="{{ image.img.url }}" alt="{{ image.img_alt }}" style="width:100%" loading="lazy"></a>
+                    
+                    {% endfor %}
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div id="SlideShowBox">
+    
+            <div id="PrevBtnBox">
+            
+                <button class="PrevBtn SlideShowBtn" type="button" name="button">&#10094;</button>
+        
+            </div>
+
+            <div id="Slide">
+
+                {% for video in all_video_slide_show_objs %}
+                <video class='SlideVideoCont' controls>
+
+                    <source src="{{ video.video.url }}" type="video/mp4" alt="{{ video.video_alt }}">
+
+                </video>
+                {% endfor %}
+
+            </div>
+
+            <div id="NextBtnBox">
+
+                <button class="NextBtn SlideShowBtn" type="button" name="button">&#10095;</button>
+
+            </div>
+  
+        </div>
+
+    </div>
+
+    <div id="WebDevelopmentBox">
+
+        <div id="WDTitleBox">
+
+            <h2 class="CloudText">Web Development</h2>
+
+        </div>
+
+        <div id="WDLBox">
+
+            <div id="WebPageListBox">
+
+                <ul>
+
+                    {% for p in all_web_development_objs reversed %}
+                    
+                    <div class="ProjectLinkBox" width="100%">
+
+                        <li style="display: inline-block;" class="ProjectLink"><a href="{{ p.web_page_link }}" target="_blank">{{ p.title }}</a></li>
+
+                    </div>
+    
+                    {% endfor %}
+    
+                </ul>
+
+            </div>
+
+            <div id="WebPagePicsBox">
+
+                <img width="90%" style="transform: rotate(-5deg); margin:auto; display: block;" id="ProjectPicture" src="{{ all_web_development_objs.first.preview_image.url }}" target="_blank" />
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}
+
+<!-- Overwriting the js block -->
+{% block js %}
+<script>
+
+    sendScreenSize("portfolio_page_visit_information", "{{ csrf_token }}");
+
+</script>
+
+<script>
+
+    const prevBtn = document.querySelector(".PrevBtn"),
+
+        nextBtn = document.querySelector(".NextBtn"),
+
+        allSlideVideoCont = document.querySelectorAll(".SlideVideoCont"),
+
+        numberOfVideos = allSlideVideoCont.length;
+
+    let slideIndex = 0;
+
+    function hideTheElements(){
+
+        for (let i = 0; i < numberOfVideos; i++) {
+
+            allSlideVideoCont[i].style.display = "none";
+
+        }
+
+        allSlideVideoCont[slideIndex].style.display = "block";
+
+    }
+
+    function centerAlignVertically(){
+
+        let firstVideo = allSlideVideoCont[0],
+            
+            firstVideoHeight = firstSlideShowCont.offsetHeight,
+        
+            reqM = (graphicDesignSlides[0].offsetHeight / 2) - (firstSlideShowContHeight / 2);
+        
+        firstSlideShowCont.style.top = `${reqM}px`;
+
+    }
+        
+    prevBtn.addEventListener("click", function(){
+
+        allSlideVideoCont[slideIndex].style.display = "none";
+        
+        allSlideVideoCont[slideIndex].pause();
+
+        slideIndex = slideIndex - 1;
+        
+        if ( slideIndex < 0) {
+        
+            slideIndex = numberOfVideos-1;
+        
+        }
+
+        allSlideVideoCont[slideIndex].style.display = "block";
+
+    })
+
+    nextBtn.addEventListener("click", function(){
+
+        allSlideVideoCont[slideIndex].style.display = "none";
+
+        allSlideVideoCont[slideIndex].pause();
+
+        slideIndex = slideIndex + 1;
+
+        if ( slideIndex > numberOfVideos-1 ) {
+
+            slideIndex = 0;
+
+        }
+
+        allSlideVideoCont[slideIndex].style.display = "block";
+
+    })
+
+    hideTheElements()
+
+
+</script>
+
+<!-- A javascript code that sends a post request to the server when a user clicks to specific elements. -->
+<script type="text/javascript" defer>
+
+    const allPhotoGridImages = document.querySelectorAll(".PhotoGridImg"),
+    
+        allSlideShowVideos = document.querySelectorAll("video"),
+ 
+        webDevelopmentProjectssLinks = document.querySelectorAll(".ProjectLink a");
+
+    function addPostRequestSendingAbility(){
+        // A function which adds post request sending functionality to specific elements.
+
+        for ( let a = 0; a < allPhotoGridImages.length; a++ ) {
+
+            let imageChoice = allPhotoGridImages[a].getAttribute("src");
+
+            allPhotoGridImages[a].addEventListener("click", function() {
+                
+                sendClickInfo("graphic_design_project_click_data", imageChoice, "{{ csrf_token }}")
+
+            });
+
+        }
+
+        for ( let b = 0; b < allSlideShowVideos.length; b++ ) {
+    
+            let videoChoice = allSlideShowVideos[b].childNodes[1].getAttribute("src");
+
+            allSlideShowVideos[b].addEventListener("play", function() {
+                
+                sendClickInfo("graphic_design_project_click_data", videoChoice, "{{ csrf_token }}")
+
+            });
+
+        }
+
+        for ( let c = 0; c < webDevelopmentProjectssLinks.length; c++ ) {
+            
+            webDevelopmentProjectssLinks[c].addEventListener("click", function() {
+                
+                let webDevProjChoice = webDevelopmentProjectssLinks[c].getAttribute("href");
+
+                alert(webDevProjChoice)
+
+                sendClickInfo("web_development_project_link_click_data", webDevProjChoice, "{{ csrf_token }}")
+
+            });
+
+            webDevelopmentProjectssLinks[c].addEventListener("mouseover", function() {
+                
+                let projectTitle = `${webDevelopmentProjectssLinks[c].textContent}`;
+
+                {% for project in all_web_development_objs %}
+
+                    if ( "{{project.title}}" == projectTitle) {
+
+                        document.querySelector("#ProjectPicture").src = "{{ project.preview_image.url }}";
+                        
+                    }
+                    
+                {% endfor %}
+
+            })
+
+        }
+
+    }
+
+    // Calling the addPostRequestSendingAbility function.
+    addPostRequestSendingAbility();
+
+</script>
+{% endblock %}

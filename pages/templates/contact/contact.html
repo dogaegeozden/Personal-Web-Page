@@ -1,0 +1,140 @@
+<!-- Extend the base html with this html file -->
+{% extends "base.html" %}
+
+<!--  Overwriting the metaDescription block -->
+{% block metaDescription %}
+<meta name="description" content="{{ all_meta_description_objs.last.text }}">
+{% endblock %}
+
+<!--  Overwriting the title block -->
+{% block title %}
+<title>Contact</title>
+{% endblock %}
+
+<!--  Overwriting the stylesheet block -->
+{% block stylesheet %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'styles/contact/contact.css' %}">
+{% endblock %}
+
+<!--  Overwriting the mainBox block -->
+{% block mainBox %}
+<div id="ContactPageBox">
+    
+    <h1>CONTACT</h1>
+
+    <div id="ContactPageContentBox">
+
+        <div class="row">
+
+            <div class="col-sm-12 col-md-12 col-lg-6 p-3">
+
+                <img src="{{ all_contact_page_picture_obj.last.image.url }}" alt="Contact Us" class="contact-image img-fluid">
+
+            </div>
+
+            <div class="col-sm-12 col-md-12 col-lg-6 p-5">
+
+                <h2>Reach Now!</h2>
+
+                <form class="contact-form" action='{{ contact.url }}' autocomplete="off" method='POST'>{% csrf_token %}
+
+                    <div class="form-group">
+
+                        <label for="id_first_name">First Name</label>
+
+                        <input name="first_name" type="text" class="form-control" id="id_first_name" placeholder="Your First Name" maxlength="250" required>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="id_last_name">Last Name</label>
+
+                        <input name="last_name" type="text" class="form-control" id="id_last_name" placeholder="Your Last Name" maxlength="250" required>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="id_email">Email</label>
+
+                        <input name="email" type="email" class="form-control" id="id_email" placeholder="Your Email" maxlength="350" required>
+
+                    </div>
+
+                    
+                    <div class="form-group">
+
+                        <label for="id_phone_number">Phone Number</label>
+
+                        <input name="phone_number" type="text" class="form-control" id="id_phone_number" placeholder="Phone Number" maxlength="100" required>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="id_message">Message</label>
+
+                        <textarea name="message" class="form-control" id="id_message" rows="4" placeholder="Your Message" maxlength="7500" required></textarea>
+
+                    </div>
+
+                    <div class="form-group my-3">
+
+                        {{ contact_form.captcha }}
+                    
+                    </div>
+
+                    <button type="submit" name="msgSendBtn" class="btn btn-primary mt-3">Submit</button>
+
+                </form>
+
+                {% include 'common/messages.html' %}
+
+                <div class="mt-5">
+
+                    <h2>Contact Information</h2>
+
+                    <p>Email: {{ all_contact_information_objs.last.email }}</p>
+
+                    <p>Phone: {{ all_contact_information_objs.last.phone_number }}</p>
+                    
+                    {% if all_contact_information_objs.last.address %}
+                    <p>Address: {{ all_contact_information_objs.last.address }}</p>
+                    {% else %}
+                    <p>Address: N/A</p>
+                    {% endif %}
+
+                    {% if all_contact_information_objs.last.freelancer %}
+                    <p><a href="{{ all_contact_information_objs.last.freelancer }}" target="_blank">Freelancer Profile</a></p>
+                    {% endif %}
+
+                    {% if all_contact_information_objs.last.upwork %}
+                    <p><a href="{{ all_contact_information_objs.last.upwork }}" target="_blank">Upwork Profile</a></p>
+                    {% endif %}
+
+                    {% if all_contact_information_objs.last.fiverr %}
+                    <p><a href="{{ all_contact_information_objs.last.fiverr }}" target="_blank">Fiverr Profile</a></p>
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+        </div>
+            
+    </div>
+
+</div>
+{% endblock %}
+
+<!-- Overwriting the js block -->
+{% block js %}
+<script>
+
+    sendScreenSize("contact_page_visit_information", "{{ csrf_token }}");
+
+</script>
+{% endblock %}

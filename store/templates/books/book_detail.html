@@ -1,0 +1,122 @@
+<!-- Extending the base html with this html file -->
+{% extends "base.html" %}
+
+<!-- Overwriting the metaDescription block -->
+{% block metaDescription %}
+<meta name=description content="{{ post_detail.text }}">
+{% endblock %}
+
+<!-- Overwriting the title block -->
+{% block title %}
+<title>{{ post_detail.title }} </title>
+{% endblock %}
+
+<!-- Overwriting the stylesheet block -->
+{% block stylesheet %}
+{% load static %}
+<link rel='stylesheet' href='{% static "styles/books/book_detail.css" %}'>
+{% endblock %}
+
+<!-- Overwriting the mainBox block -->
+{% block mainBox %}
+<div id="BookDetailPageBox">
+
+    <div id="BookDetailContentBox">
+
+        <div class="row">
+
+            <div id="CarouselColumn" class="col-sm-12 col-md-4">
+
+                <div id="carouselExampleIndicators" class="carousel slide">
+
+                    <div class="carousel-indicators">
+                    
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    
+                    </div>
+                    
+                    <div class="carousel-inner">
+                        
+                        {% if book_detail.cover_page_image %}
+                        <div class="carousel-item active">
+                    
+                            <img src="{{ book_detail.cover_page_image.url }}" class="d-block w-100" alt="{{ book_detail.cover_page_image_alt }}">
+                    
+                        </div>
+                        {% endif %}
+                    
+                        {% if book_detail.table_of_contents_image %}
+                        <div class="carousel-item">
+                    
+                            <img src="{{ book_detail.table_of_contents_image.url }}" class="d-block w-100" alt="{{ book_detail.table_of_contents_image }}">
+                    
+                        </div>
+                        {% endif %}
+                    
+                        {% if book_detail.copyright_page_image %}
+                        <div class="carousel-item">
+
+                            <img src="{{ book_detail.copyright_page_image.url }}" class="d-block w-100" alt="{{ book_detail.copyright_page_image }}">
+
+                        </div>
+                        {% endif %}
+
+                    </div>
+                    
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                    
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    
+                        <span class="visually-hidden">Previous</span>
+                    
+                    </button>
+                    
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                    
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    
+                        <span class="visually-hidden">Next</span>
+                    
+                    </button>
+                  
+                </div>
+
+            </div>
+
+            <div id="BookInformationColumn" class="col-sm-12 col-md-8">
+
+                <h1 class="mb-5">{{ book_detail.book_title }}</h1>
+
+                <h2 class="mb-2">{{ book_detail.author }}</h2>
+
+                <p>Publish Date: <span>{{ book_detail.publishing_date }}</span></p>
+            
+                <p>Description: {{ book_detail.short_summary }}</p>
+
+                <div class="buy-button">
+
+                    <a target="_blank" href="{{ book_detail.payment_link }}" class="btn btn-success btn-md">Buy Now</a>
+
+                </div>
+
+            </div>
+
+        </div>
+        
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block javaScriptCodes %}
+<script>
+
+    sendScreenSize("book_detail_page_visit_information", "{{ csrf_token }}");
+
+</script>
+{% endblock %}

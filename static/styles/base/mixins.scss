@@ -1,0 +1,182 @@
+// LIBRARIES
+@import "../base/variables.scss";
+
+
+
+// MIXINS
+
+
+
+//////////////////////////////
+
+// STANDARD
+
+//////////////////////////////
+
+@mixin standard-page-box-style {
+    min-height: 100vh;
+    height: auto;
+    width: 100%;
+    display: block;
+    overflow: hidden;
+
+    @media (min-width: $break-point1) {
+        margin: 50px auto;
+    }
+
+    @media (min-width: $break-point3) {
+        margin: 75px auto;
+    }
+    
+    @media (min-width: $break-point10) {
+        margin: 100px auto;
+    }
+
+    @media (min-width: $break-point14) {
+        margin: 120px auto;
+    }
+}
+
+
+@mixin standard-content-box-style {
+    min-height: 100px;
+    height: auto;
+    display: block;
+    margin: auto;
+    overflow: hidden;
+
+    @media (min-width: $break-point1) {
+        width: 90%;
+    }
+
+    @media (min-width: $break-point12) {
+        width: 80%;
+    }
+
+    @media (min-width: $break-point15) {
+		margin-top: 70px;
+    }
+}
+
+@mixin standard-detail-content-box-style {
+    min-height: 100px;
+    height: auto;
+    width: 80%;
+    display: block;
+    margin: auto;
+    overflow: hidden;
+}
+
+
+
+//////////////////////////////
+
+// GRID
+
+//////////////////////////////
+
+@mixin grid-content-box-style {
+    min-height: 100px;
+    height: auto;
+    width: 90%;
+    max-width: 1400px;
+    display: block;
+    margin: auto;
+    overflow: hidden;
+
+    @media (min-width: $break-point10) {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 10px;
+    }
+
+    @media (min-width: $break-point12) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    @media (min-width: $break-point14) {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    @media (min-width: $break-point15) {
+		margin-top: 70px;
+    }
+}
+
+
+
+//////////////////////////////
+
+// ACCOUNT PORTAL
+
+//////////////////////////////
+
+@mixin accountportal-page-box-style {
+    min-height: 100vh;
+    height: auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+    @media (min-width: $break-point1) {
+        margin: 50px auto;
+    }
+
+    @media (min-width: $break-point3) {
+        margin: 75px auto;
+    }
+    
+    @media (min-width: $break-point10) {
+        margin: 100px auto;
+    }
+
+    @media (min-width: $break-point14) {
+        margin: 120px auto;
+    }
+}
+
+
+@mixin accountportal-content-box-style {
+    min-height: 100px;
+    height: auto;
+    width: 80%;
+    display: block;
+    margin: auto;
+    overflow: hidden;
+}
+
+
+
+//////////////////////////////
+
+// LEGAL SUITE
+
+//////////////////////////////
+
+@mixin legalsuite-page-box-style {
+    min-height: 100vh;
+    height: auto;
+    max-width: 1400px;
+    width: 90%;
+    margin: 50px auto;
+    display: block;
+    overflow: hidden;
+
+    @media (min-width: $break-point1) {
+        margin: 50px auto;
+    }
+
+    @media (min-width: $break-point3) {
+        margin: 75px auto;
+    }
+    
+    @media (min-width: $break-point10) {
+        margin: 100px auto;
+    }
+
+    @media (min-width: $break-point14) {
+        margin: 120px auto;
+    }
+}

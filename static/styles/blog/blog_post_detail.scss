@@ -1,0 +1,60 @@
+// LIBRARIES
+@import "../base/variables.scss";
+@import "../base/mixins.scss";
+
+// MEDIA QUERIES
+@media (min-width: $break-point1) {
+
+    #PostDetailPageBox {
+        @include standard-page-box-style;
+    }
+
+    #PostDetailContentBox {
+		@include standard-detail-content-box-style;
+	}
+    
+    .fa-heart:hover {
+        cursor: pointer;
+    }
+
+    .bi-twitter-x {
+        color: black;
+    }
+
+    .bs-facebook-ico {
+        color: #3b5998;
+    }
+
+    .bs-facebook-ico, .bs-twitter-ico {
+        width: 25px;
+        height: 25px;
+        margin: 2px;
+        float: left;
+        display: block;
+        transition: transform 0.2s ease;
+    }
+
+    .bs-facebook-ico:hover, .bs-twitter-ico:hover {
+        width: 28px;
+        height: 28px;
+        transform: scale(1.2);
+    }
+    
+}
+
+@media (min-width: $break-point2) {}
+@media (min-width: $break-point3) {}
+@media (min-width: $break-point4) {}
+@media (min-width: $break-point5) {}
+@media (min-width: $break-point6) {}
+@media (min-width: $break-point7) {}
+@media (min-width: $break-point8) {}
+@media (min-width: $break-point9) {}
+@media (min-width: $break-point10) {}
+@media (min-width: $break-point11) {}
+@media (min-width: $break-point12) {}
+@media (min-width: $break-point13) {}
+@media (min-width: $break-point14) {}
+@media (min-width: $break-point15) {}
+@media (min-width: $break-point16) {}
+@media (min-width: $break-point17) {}

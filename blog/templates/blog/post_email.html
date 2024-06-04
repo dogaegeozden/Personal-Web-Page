@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+
+        <meta charset="UTF-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>{{ post.title }}</title>
+
+        <style>
+
+            body {
+                font-family: 'Arial', sans-serif;
+                background-color: #f4f4f4;
+                color: #333;
+                margin: 0;
+                padding: 0;
+            }
+
+            .email-container {
+                max-width: 600px;
+                margin: 20px auto;
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+
+            h1 {
+                color: #007BFF;
+            }
+
+            p {
+                line-height: 1.6;
+            }
+
+            .cta-button {
+                display: inline-block;
+                padding: 10px 20px;
+                border: 1.5px solid #007BFF;
+                color: #007BFF;
+                text-decoration: none;
+                border-radius: 5px;
+            }
+
+            .img-fluid {
+                max-width: 100%;
+                margin: auto;
+            }
+
+        </style>
+
+    </head>
+
+    <body>
+
+        <div class="email-container">
+
+            <h1>{{ post.title }}</h1>
+
+            {% if post.image %}
+            <img src="https://www.dogaegeozden.com{{ post.image.url }}" class="img-fluid" alt="{{ post.alt }}">
+            {% endif %}
+
+            {% if post.video %}
+
+            <p>Watch the video: <a href="https://www.dogaegeozden.com{{ post.video.url }}">Video Link</a></p>
+
+            {% elif post.youtube_url %}
+
+            <p>Watch the video: <a href="https://www.dogaegeozden.com{{ post.youtube_url }}">YouTube Link</a></p>
+            
+            {% endif %}
+            
+            {% if post.para1 %}
+            <p>{{ post.para1 }}</p>
+            {% endif %}
+
+            <a href="https://www.dogaegeozden.com{{ post.get_absolute_url }}" class="cta-button">Read More</a>
+
+            <p>{{ post.get_unsubscribe_link }}</p>
+
+        </div>
+
+    </body>
+
+</html>

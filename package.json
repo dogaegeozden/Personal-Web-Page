@@ -1,0 +1,14 @@
+{
+  "name": "online_portfolio",
+  "version": "1.0.0",
+  "description": "My personal web page",
+  "main": "index.js",
+  "devDependencies": {
+    "sass": "^1.77.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Doga Ege Ozden",
+  "license": "ISC"
+}

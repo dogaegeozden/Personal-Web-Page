@@ -1,0 +1,98 @@
+<!-- Extending the base html with this html file -->
+{% extends "base.html" %}
+
+<!-- Overwriting the metaDescription block -->
+{% block metaDescription %}
+<meta name="description" content="{{ all_meta_description_objs.last.text }}">
+{% endblock %}
+
+<!-- Overwriting the stylesheet block -->
+{% block stylesheet %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'styles/services/services.css' %}">
+{% endblock %}
+
+<!-- Overwriting the title block -->
+{% block title %}
+<title>Services</title>
+{% endblock %}
+
+{% block StoreLink %}
+<a class="nav-link dropdown-toggle fw-bold active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Store</a>
+{% endblock %}
+
+<!-- Overwriting the mainBox block -->
+{% block mainBox %}
+<div id="ServicesPageBox">
+
+    <h1>SERVICES</h1>
+
+    <div id="ServiceContentBox">
+
+        <div id="ServicesIntroductionBox">
+
+            <div id="VideoBox">
+
+                <video width="100%" height="auto" controls>
+
+                    <source src="{{ all_services_page_main_content_objs.last.video.url }}" type="video/mp4">
+
+                    Your browser does not support the video tag.
+
+                </video>
+
+            </div>
+
+            <div id="ParaBox">
+
+                <p>{{ all_services_page_main_content_objs.last.para1 }}</p>
+
+            </div>
+
+        </div>
+
+        <div id="CardBox">
+
+            {% for service in all_service_objs reversed %}
+
+            <div class="card">
+
+                <a class="CardLink" href="{{ service.get_absolute_url }}">
+                    
+                    <div class="CardImageBox">
+                    
+                        <img src="{{ service.thumbnail_picture.url }}" alt="{{ service.alt_for_thumbnail_picture }}" style="width:100%">
+                        
+                    </div>
+
+                    <div class="CardTextBox">
+
+                        <h2>{{ service.service_title }}</h2>
+
+                        <p>{{ service.call_to_action_sentence }}</p>  
+    
+                    </div>
+
+                </a>
+                
+                <p><a target="_blank" href="{{ service.get_absolute_url }}"><button>Details</button></a></p>
+            
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}
+
+<!-- Overwriting the javascript block -->
+{% block js %}
+<script>
+
+    sendScreenSize("services_page_visit_information", "{{ csrf_token }}");
+
+</script>
+{% endblock %}

@@ -1,0 +1,421 @@
+// LIBRARIES
+@import "../base/variables.scss";
+@import "../base/mixins.scss";
+
+// MEDIA QUERIES
+@media (min-width: $break-point1) {
+
+    #PortfolioPageBox {
+        @include standard-page-box-style;
+    }
+
+    #PhotoGridBox {
+        width: 90%;
+        margin: auto;
+    }
+
+    #row {
+        display: -ms-flexbox; /* IE10 */
+        display: flex;
+        -ms-flex-wrap: wrap; /* IE10 */
+        flex-wrap: wrap;
+        padding: 0 4px;
+    }
+    
+    /* Create four equal columns that sits next to each other */
+    .column {
+        -ms-flex: 25%; /* IE10 */
+        flex: 25%;
+        max-width: 25%;
+        padding: 0 4px;
+    }
+    
+    .column img {
+        margin-top: 8px;
+        vertical-align: middle;
+        width: 100%;
+    }
+    
+    /* Responsive layout - makes a two column-layout instead of four columns */
+    @media screen and (max-width: 800px) {
+    
+        .column {
+            -ms-flex: 50%;
+            flex: 50%;
+            max-width: 50%;
+        }
+    
+    }
+    
+    /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+    @media screen and (max-width: 600px) {
+    
+        .column {
+            -ms-flex: 100%;
+            flex: 100%;
+            max-width: 100%;
+        }
+    
+    }
+
+    .CloudText {
+        font-family: 'Coiny', cursive;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-image: url("/static/assets/clouds.jpg");
+        background-size: auto;
+        background-attachment: unset;
+        background-position: 0%;
+        animation: clouds-moving infinite 220s;
+        animation-fill-mode: forwards;
+        animation-play-state: running;
+        animation-timing-function: linear;
+        display: block;
+        height: 100%;
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    @keyframes clouds-moving {
+        0% {
+            background-position: 0%;
+        }
+        50% {
+            background-position: 100%;
+        }
+        100% {
+            background-position: 0%;
+        }
+    }
+
+    #GDTitleBox, #WDTitleBox {
+        display: inline-block;
+        width: 100%;
+        height: auto;
+        margin-bottom: 20px;
+    }
+
+    #PhotoGridBox, #SlideShowBox {
+        margin: 20px auto;
+    }
+
+    #SlideShowBox {
+        width: 100%;
+        height: 200px;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 0;
+        display: inline-block;
+    }
+
+    #PrevBtnBox, #NextBtnBox {
+        height: 100%;
+        width: 20%;
+        float: left;
+        display: block;
+    }
+
+    #GDTitleBox {
+        margin: auto;
+        text-align: center;
+    }
+
+    #Slide {
+        display: block;
+        float: left;
+        width: 60%;
+        height: 100%;
+        text-align: center;
+    }
+
+    .SlideVideoCont {
+        position: relative;
+        max-width: 100%;
+        max-height: 100%;
+        min-height: 80%;
+        min-width: 100%;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .SlideShowBtn {
+        height: 30px;
+        width: 30px;
+        font-size: 15px;
+        font-weight: bold;
+        top: 50%;
+        transform: translateY(-50%);
+        border: none;
+        outline: none;
+        color: rgb(255, 255, 255);
+        background: #111;
+        cursor: pointer;
+        position: relative;
+        z-index: 0;
+        border-radius: 50%;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+    }
+
+    .SlideShowBtn:before {
+        content: "";
+        background: linear-gradient(
+          45deg,
+          #ff0000,
+          #ff7300,
+          #fffb00,
+          #48ff00,
+          #00ffd5,
+          #002bff,
+          #7a00ff,
+          #ff00c8,
+          #ff0000
+        );
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        background-size: 400%;
+        z-index: -1;
+        filter: blur(5px);
+        -webkit-filter: blur(5px);
+        width: calc(100% + 4px);
+        height: calc(100% + 4px);
+        animation: glowing-button 20s linear infinite;
+        transition: opacity 0.3s ease-in-out;
+        border-radius: 50%;
+    }
+
+    @keyframes glowing-button {
+        0% {
+            background-position: 0 0;
+        }
+        50% {
+            background-position: 400% 0;
+        }
+        100% {
+            background-position: 0 0;
+        }
+    }
+
+    .SlideShowBtn:after {
+        z-index: -1;
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: #222;
+        left: 0;
+        top: 0;
+        border-radius: 50%;
+    }
+
+    .PrevBtn {
+        float: left;
+        left: 50%;
+        transform: translate(-50%,-50%);
+    }
+
+    .NextBtn {
+        float: right;
+        right: 50%;
+        transform: translate(50%, -50%);
+    }
+
+    #WebDevelopmentBox {
+        min-height: 200px;
+        width: 100%;
+        margin: auto;
+        height: auto;
+        overflow: hidden;
+    }
+
+    #WDTitleBox {
+        display: inline-block;
+    }
+
+    #WDLBox {
+        display: block;
+    }
+
+    #WebPagePicsBox, #WebPageListBox {
+        float: left;
+    }
+
+    #WebPageListBox {
+        text-align: center;
+        width: 100%;
+    }
+
+    .ProjectLinkBox {
+        height: 50px;
+    }
+
+    .ProjectLink a {
+        font-family: 'Dancing Script', cursive;
+        color: black;
+        text-decoration: none;
+        font-size: 20px;
+    }
+
+    .ProjectLink a:hover {
+        font-size: 25px;
+        transition: 0.35s ease;
+    }
+
+    #WebPageListBox ul {
+        padding: 0;
+    }
+
+    #WDLBox ul li {
+        list-style: none;
+    }
+
+    #WebPagePicsBox {
+        display: none;
+    }
+
+}
+
+@media (min-width: $break-point2) {
+
+    .SlideShowBtn {
+        height: 40px;
+        width: 40px;
+    }
+
+}
+
+@media (min-width: $break-point3) {}
+
+@media (min-width: $break-point4) {
+
+    .SlideShowBtn {
+        height: 45px;
+        width: 45px;
+    }
+
+}
+
+@media (min-width: $break-point5) {
+
+    #SlideShowBox {
+        height: 300px;
+    }
+
+}
+
+@media (min-width: $break-point6) {}
+@media (min-width: $break-point7) {}
+@media (min-width: $break-point8) {}
+
+@media (min-width: $break-point9) {
+
+    #SlideShowBox {
+        height: 400px;
+    }
+
+    .ProjectLink a {
+        font-size: 25px;
+    }
+
+    .ProjectLink a:hover {
+        font-size: 30px;
+    }
+
+    .SlideShowBtn {
+        height: 60px;
+        width: 60px;
+        font-size: 25px;
+    }
+
+}
+
+@media (min-width: $break-point10) {
+
+    #SlideShowBox {
+        height: 500px;
+    }
+
+}
+
+@media (min-width: $break-point11) {}
+
+@media (min-width: $break-point12) {
+
+    .CloudText {
+		text-align: initial;
+		margin-left: 150px;
+	}
+
+    #SlideShowBox {
+        height: 550px;
+    }
+
+    .SlideShowBtn {
+        height: 90px;
+        width: 90px;
+    }
+
+    #WebPagePicsBox {
+        width: 60%;
+    }
+
+    #WebPageListBox {
+        width: 40%;
+    }
+
+    .ProjectLinkBox {
+        height: 70px;
+    }
+
+    .ProjectLink a {
+        font-size: 30px;
+    }
+
+    .ProjectLink a:hover {
+        font-size: 35px;
+    }
+
+    #WebPagePicsBox {
+        display: block;
+    }
+
+}
+
+@media (min-width: $break-point13) {}
+
+@media (min-width: $break-point14) {
+
+    #PhotoGridBox {
+        width: 70%;
+        margin: auto;
+    }
+    
+
+    #SlideShowBox {
+        height: 600px;
+    }
+
+}
+
+@media (min-width: $break-point15) {
+
+    .CloudText {
+		text-align: initial;
+		margin-left: 170px;
+	}
+
+    #GraphicDesignBox, #WebDevelopmentBox {
+        margin-top: 70px;
+    }
+
+    #PhotoGridBox, #SlideShowBox {
+        margin: 40px auto;
+    }
+
+}
+
+@media (min-width: $break-point16) {}
+@media (min-width: $break-point17) {}

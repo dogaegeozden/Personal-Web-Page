@@ -1,0 +1,40 @@
+// LIBRARIES
+@import "../base/variables.scss";
+@import "../base/mixins.scss";
+
+// MEDIA QUERIES
+@media (min-width: $break-point1) {
+
+    #PrivacyPolicyBox {
+        @include legalsuite-page-box-style;
+    }
+
+    ol a {
+        text-decoration: none;
+        color: black;
+    }
+
+    ol a:hover {
+        text-decoration: underline;
+        transition: 0.35s ease;
+    }
+
+}
+
+@media (min-width: $break-point2) {}
+@media (min-width: $break-point3) {}
+@media (min-width: $break-point4) {}
+@media (min-width: $break-point5) {}
+@media (min-width: $break-point6) {}
+@media (min-width: $break-point7) {}
+@media (min-width: $break-point8) {}
+@media (min-width: $break-point9) {}
+@media (min-width: $break-point10) {}
+@media (min-width: $break-point11) {}
+@media (min-width: $break-point12) {}
+@media (min-width: $break-point13) {}
+@media (min-width: $break-point14) {}
+@media (min-width: $break-point15) {}
+@media (min-width: $break-point16) {}
+@media (min-width: $break-point17) {}
+
